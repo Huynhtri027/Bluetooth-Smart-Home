@@ -2,12 +2,10 @@ package smarthome.com.bl;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 /**
  * Created by Azad on 28-May-16.
