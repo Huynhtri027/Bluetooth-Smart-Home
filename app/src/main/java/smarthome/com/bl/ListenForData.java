@@ -15,7 +15,7 @@ public class ListenForData implements Runnable {
     private String data;
     private boolean stopWorker = false;
     private Handler handler = new Handler();
-    private UpdatorUI updatorUI;
+    private Updator updatorUI;
     private ReadFromSocket readFromSocket;
 
     /**
@@ -30,10 +30,11 @@ public class ListenForData implements Runnable {
     /**
      * Pass The TextView to display the changed
      * data
-     * @param myLabel
+     * @param updator
      */
-    public void getTextArea(TextView myLabel){
-        updatorUI = new UpdatorUI(myLabel);
+
+    public void setUIComponent(Updator updator){
+        updatorUI = updator;
     }
     @Override
     public void run()
@@ -45,7 +46,8 @@ public class ListenForData implements Runnable {
                 if (readFromSocket.isDataAvailable()>0) {
                     data = readFromSocket.readSocketData();
                     updatorUI.setData(data);
-                    handler.post(updatorUI);
+
+                    handler.post((Runnable) updatorUI);
                 }
             }
             catch (IOException e){
