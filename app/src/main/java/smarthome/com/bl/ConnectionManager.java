@@ -15,11 +15,11 @@ import java.io.OutputStream;
 
 public class ConnectionManager extends Activity
 {
-    TextView myLabel;
     Button connectButton ;
     Button closeButton ;
     OutputStream outputStream ;
-    ListenForData listenForData;
+    // Helpfull to get response from BL remote device
+    // ListenForData listenForData;
     Switch toggle ;
     int i =0;
     @Override
@@ -28,11 +28,9 @@ public class ConnectionManager extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.connection);
         connectButton = (Button)findViewById(R.id.connect);
-        closeButton = (Button)findViewById(R.id.closebutton);
         toggle =(Switch) findViewById(R.id.switch1);
         final BlueToothManager blueToothManager = new BlueToothManager();
         final Updator updator = new SwitchUpdate(toggle);
-         myLabel = (TextView)findViewById(R.id.myLabel);
 
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -44,13 +42,14 @@ public class ConnectionManager extends Activity
                     if (isChecked) {
                         // The toggle is enabled
 
-                        msg = "Hello " + String.valueOf(!isChecked);
-
+                        //msg = "Hello " + String.valueOf(!isChecked);
+                        msg = "1";
 
 
                     } else {
                         // The toggle is disabled
                         //msg = "Hello " + String.valueOf(!isChecked);
+                        msg = "1";
                     }
                     msg += "\n";
                     outputStream.write(msg.getBytes());
@@ -72,13 +71,13 @@ public class ConnectionManager extends Activity
                     Log.d("Connected", String.valueOf(x));
                     blueToothManager.openConnection();
                     outputStream = blueToothManager.getOutputSream();
-
-                    listenForData = new ListenForData(blueToothManager.getInputSream());
-                    listenForData.setUIComponent(updator);
-
-                    Thread mythred = new Thread(listenForData);
-
-                    mythred.start();
+                    outputStream.write("6666\n".getBytes());
+//                    listenForData = new ListenForData(blueToothManager.getInputSream());
+//                    listenForData.setUIComponent(updator);
+//
+//                    Thread mythred = new Thread(listenForData);
+//
+//                    mythred.start();
 
                 } catch (IOException ex) {
                     Log.d("My Ex" , ex.getMessage());
@@ -90,21 +89,6 @@ public class ConnectionManager extends Activity
             }
         });
 
-        //Close button
-        closeButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                try
-                {
-                    String msg = "Hello " + String.valueOf(i);
-                    msg += "\n";
-                    i++;
-                    outputStream.write(msg.getBytes());
 
-                }
-                catch (IOException ex) { }
-            }
-        });
     }
 }
