@@ -14,9 +14,6 @@ import java.io.InputStream;
 /**
  * ReadFromSocket That is a Boilerplate class
  * to process all InputStream
- *
- * some change
- * 
  */
 public class ReadFromSocket {
 

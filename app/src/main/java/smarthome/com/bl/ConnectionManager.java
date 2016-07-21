@@ -21,34 +21,7 @@ public class ConnectionManager extends Activity
     // Helpfull to get response from BL remote device
     // ListenForData listenForData;
     Switch toggle1, toggle2, toggle3 ;
-
-    CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {
-
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            try {
-
-                String msg ="";
-                if (isChecked) {
-                    // The toggle is enabled
-                    msg = buttonView.getTag().toString();
-
-
-                } else {
-                    msg = buttonView.getTag().toString();
-                }
-                msg += "\n";
-                Log.d("DRY", msg);
-                outputStream.write(msg.getBytes());
-
-            } catch (IOException ex) {
-
-            }
-            catch (NullPointerException ex) {
-
-            }
-        }
-    };
-
+    SwitchButton switchButton = new SwitchButton(outputStream);
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -65,9 +38,9 @@ public class ConnectionManager extends Activity
         toggle2.setTag("2");
         toggle3.setTag("3");
 
-        toggle1.setOnCheckedChangeListener(listener);
-        toggle2.setOnCheckedChangeListener(listener);
-        toggle3.setOnCheckedChangeListener(listener);
+        toggle1.setOnCheckedChangeListener(switchButton);
+        toggle2.setOnCheckedChangeListener(switchButton);
+        toggle3.setOnCheckedChangeListener(switchButton);
         connectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
@@ -77,6 +50,7 @@ public class ConnectionManager extends Activity
                     Log.d("Connected", String.valueOf(x));
                     blueToothManager.openConnection();
                     outputStream = blueToothManager.getOutputSream();
+                    switchButton.setBl(outputStream);
                     outputStream.write("6666\n".getBytes());
 //                    listenForData = new ListenForData(blueToothManager.getInputSream());
 //                    listenForData.setUIComponent(updator);

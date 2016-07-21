@@ -1,22 +1,43 @@
 package smarthome.com.bl;
-
-import android.content.Context;
+import android.util.Log;
 import android.widget.CompoundButton;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Created by Azad on 21-Jul-16.
  */
 
-public class SwitchButton implements CompoundButton.OnCheckedChangeListener {
+class SwitchButton implements CompoundButton.OnCheckedChangeListener {
 
-    String myObject;
-    public SwitchButton(String yourObject){
-        this.myObject = yourObject;
+    private OutputStream outputStream;
+    public SwitchButton(OutputStream outputStream){
+        this.outputStream = outputStream;
     }
-    @Override
+    public void setBl(OutputStream outputStream){
+        this.outputStream = outputStream;
+    }
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//        if (myObject == whatever){
-//            ....
-//        }
+        try {
+
+            String msg ="";
+            if (isChecked) {
+                // The toggle is enabled
+                msg = buttonView.getTag().toString();
+
+
+            } else {
+                msg = buttonView.getTag().toString();
+            }
+            msg += "\n";
+            Log.d("DRY", msg);
+            outputStream.write(msg.getBytes());
+
+        } catch (IOException ex) {
+            Log.d("aaaaa","a");
+        }
+        catch (NullPointerException ex) {
+            Log.d("null","a");
+        }
     }
 }
