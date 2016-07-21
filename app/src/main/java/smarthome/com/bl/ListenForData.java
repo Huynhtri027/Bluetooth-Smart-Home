@@ -2,7 +2,6 @@ package smarthome.com.bl;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,9 +29,10 @@ public class ListenForData implements Runnable {
     }
 
     /**
-     * Pass The TextView to display the changed
+     * Pass The Updator to display the changed
      * data
      * @param updator
+     *
      */
 
     public void setUIComponent(Updator updator){
