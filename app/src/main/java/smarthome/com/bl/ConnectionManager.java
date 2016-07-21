@@ -20,48 +20,54 @@ public class ConnectionManager extends Activity
     OutputStream outputStream ;
     // Helpfull to get response from BL remote device
     // ListenForData listenForData;
-    Switch toggle ;
-    int i =0;
+    Switch toggle1, toggle2, toggle3 ;
+
+    CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {
+
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            try {
+
+                String msg ="";
+                if (isChecked) {
+                    // The toggle is enabled
+                    msg = buttonView.getTag().toString();
+
+
+                } else {
+                    msg = buttonView.getTag().toString();
+                }
+                msg += "\n";
+                Log.d("DRY", msg);
+                outputStream.write(msg.getBytes());
+
+            } catch (IOException ex) {
+
+            }
+            catch (NullPointerException ex) {
+
+            }
+        }
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.connection);
         connectButton = (Button)findViewById(R.id.connect);
-        toggle =(Switch) findViewById(R.id.switch1);
+        toggle1 =(Switch) findViewById(R.id.switch1);
+        toggle2 =(Switch) findViewById(R.id.switch2);
+        toggle3 =(Switch) findViewById(R.id.switch3);
         final BlueToothManager blueToothManager = new BlueToothManager();
-        final Updator updator = new SwitchUpdate(toggle);
+        final Updator updator = new SwitchUpdate(toggle1);
 
-        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        toggle1.setTag("1");
+        toggle2.setTag("2");
+        toggle3.setTag("3");
 
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                try
-                {
-                    String msg ="";
-                    if (isChecked) {
-                        // The toggle is enabled
-
-                        //msg = "Hello " + String.valueOf(!isChecked);
-                        msg = "1";
-
-
-                    } else {
-                        // The toggle is disabled
-                        //msg = "Hello " + String.valueOf(!isChecked);
-                        msg = "1";
-                    }
-                    msg += "\n";
-                    outputStream.write(msg.getBytes());
-
-                }
-                catch (IOException ex) { }
-                catch (NullPointerException ex) { }
-
-
-
-            }
-        });
+        toggle1.setOnCheckedChangeListener(listener);
+        toggle2.setOnCheckedChangeListener(listener);
+        toggle3.setOnCheckedChangeListener(listener);
         connectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
