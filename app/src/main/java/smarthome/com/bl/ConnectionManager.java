@@ -50,6 +50,11 @@ public class ConnectionManager extends Activity
                     Log.d("Connected", String.valueOf(x));
                     blueToothManager.openConnection();
                     outputStream = blueToothManager.getOutputSream();
+
+                    if (outputStream != null){
+                        connectButton.setText("Connected");
+                        connectButton.setEnabled(false);
+                    }
                     switchButton.setBl(outputStream);
                     outputStream.write("6666\n".getBytes());
 //                    listenForData = new ListenForData(blueToothManager.getInputSream());
