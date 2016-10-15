@@ -20,48 +20,27 @@ public class ConnectionManager extends Activity
     OutputStream outputStream ;
     // Helpfull to get response from BL remote device
     // ListenForData listenForData;
-    Switch toggle ;
-    int i =0;
+    Switch toggle1, toggle2, toggle3 ;
+    SwitchButton switchButton = new SwitchButton(outputStream);
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.connection);
         connectButton = (Button)findViewById(R.id.connect);
-        toggle =(Switch) findViewById(R.id.switch1);
+        toggle1 =(Switch) findViewById(R.id.switch1);
+        toggle2 =(Switch) findViewById(R.id.switch2);
+        toggle3 =(Switch) findViewById(R.id.switch3);
         final BlueToothManager blueToothManager = new BlueToothManager();
-        final Updator updator = new SwitchUpdate(toggle);
+        final Updator updator = new SwitchUpdate(toggle1);
 
-        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        toggle1.setTag("1");
+        toggle2.setTag("2");
+        toggle3.setTag("3");
 
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                try
-                {
-                    String msg ="";
-                    if (isChecked) {
-                        // The toggle is enabled
-
-                        //msg = "Hello " + String.valueOf(!isChecked);
-                        msg = "1";
-
-
-                    } else {
-                        // The toggle is disabled
-                        //msg = "Hello " + String.valueOf(!isChecked);
-                        msg = "1";
-                    }
-                    msg += "\n";
-                    outputStream.write(msg.getBytes());
-
-                }
-                catch (IOException ex) { }
-                catch (NullPointerException ex) { }
-
-
-
-            }
-        });
+        toggle1.setOnCheckedChangeListener(switchButton);
+        toggle2.setOnCheckedChangeListener(switchButton);
+        toggle3.setOnCheckedChangeListener(switchButton);
         connectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
@@ -71,6 +50,12 @@ public class ConnectionManager extends Activity
                     Log.d("Connected", String.valueOf(x));
                     blueToothManager.openConnection();
                     outputStream = blueToothManager.getOutputSream();
+
+                    if (outputStream != null){
+                        connectButton.setText("Connected");
+                        connectButton.setEnabled(false);
+                    }
+                    switchButton.setBl(outputStream);
                     outputStream.write("6666\n".getBytes());
 //                    listenForData = new ListenForData(blueToothManager.getInputSream());
 //                    listenForData.setUIComponent(updator);

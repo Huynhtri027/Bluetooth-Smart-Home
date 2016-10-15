@@ -14,9 +14,9 @@ import java.io.InputStream;
 public class ReadFromSocket {
 
     private InputStream mmInputStream;
-    byte[] readBuffer = new byte[100];
-    final byte delimiter = 10; //This is the ASCII code for a newline character
-    int readBufferPosition = 0; // init from 0
+    private byte[] readBuffer = new byte[100];
+    private final byte delimiter = 10; //This is the ASCII code for a newline character
+    private int readBufferPosition = 0; // init from 0
 
     /**
      * Take Bluetooth InputStream
