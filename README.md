@@ -8,8 +8,17 @@ This is a small project to controll Relay switches by Android app.
 
 > Embedded programming 
 
+## Prerequisites
 
-# Contact
+Android Studio 2
+
+Java 1.8
+
+
+## Installation
+
+
+## Contact
 > Facebook https://www.facebook.com/mr.saiful.azad
 
 > Gmail mr.saiful.azad@gmail.com
