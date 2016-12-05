@@ -17,7 +17,7 @@ Java 1.8
 ## Installation
 Install the app from play store 
 
-Buy our hardware from our store 
+Buy hardware from our store 
 
 ## Contact
 > Facebook https://www.facebook.com/mr.saiful.azad
