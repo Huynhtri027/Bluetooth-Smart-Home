@@ -5,13 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.ToggleButton;
-
 import java.io.IOException;
 import java.io.OutputStream;
+import smarthome.util.Messages;
 
 public class ConnectionManager extends Activity
 {
@@ -45,7 +42,7 @@ public class ConnectionManager extends Activity
             public void onClick(View v) {
                 try {
 
-                    boolean x = blueToothManager.connectMyBL("HC-05");
+                    boolean x = blueToothManager.connectMyBL(Messages.BLUETOOTH_DEVICE_NAME);
 
                     Log.d("Connected", String.valueOf(x));
                     blueToothManager.openConnection();
@@ -56,7 +53,7 @@ public class ConnectionManager extends Activity
                         connectButton.setEnabled(false);
                     }
                     switchButton.setBl(outputStream);
-                    outputStream.write("6666\n".getBytes());
+                    outputStream.write("6199\n".getBytes());
 //                    listenForData = new ListenForData(blueToothManager.getInputSream());
 //                    listenForData.setUIComponent(updator);
 //
