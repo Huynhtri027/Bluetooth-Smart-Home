@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">BL</string>
+    <string name="app_name">Bluetooth Smart Home</string>
+
+    <!--Switch Names-->
+    <string name="switch_1">Red Lanterns</string>
+    <string name="switch_2">Yellow Lanterns</string>
+    <string name="switch_3">Green Lanterns</string>
 
 </resources>
