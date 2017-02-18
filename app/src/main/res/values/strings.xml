@@ -1,10 +1,15 @@
 <resources>
-    <string name="app_name">BL</string>
     <string name="title_activity_app_main">AppMainActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="app_name">Bluetooth Smart Home</string>
+
+    <!--Switch Names-->
+    <string name="switch_1">Red Lanterns</string>
+    <string name="switch_2">Yellow Lanterns</string>
+    <string name="switch_3">Green Lanterns</string>
 
 </resources>
