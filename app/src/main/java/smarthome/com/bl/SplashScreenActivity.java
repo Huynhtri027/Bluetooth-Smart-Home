@@ -38,7 +38,7 @@ public class SplashScreenActivity extends Activity {
                 finish();
 
                 //Start MainActivity.class
-                Intent myIntent = new Intent(SplashScreenActivity.this, ConnectionManager.class);
+                Intent myIntent = new Intent(SplashScreenActivity.this, AppMainActivity.class);
                 startActivity(myIntent);
             }
         };
