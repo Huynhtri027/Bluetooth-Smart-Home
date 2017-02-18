@@ -1,7 +1,9 @@
 package smarthome.com.bl;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +12,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import smarthome.util.Messages;
 
-public class ConnectionManager extends Activity
+public class ConnectionManager extends AppCompatActivity
 {
     Button connectButton ;
     Button closeButton ;
@@ -72,5 +74,9 @@ public class ConnectionManager extends Activity
         });
 
 
+    }
+
+    public void newMainPageClicked(View view) {
+        startActivity(new Intent(view.getContext(), AppMainActivity.class));
     }
 }

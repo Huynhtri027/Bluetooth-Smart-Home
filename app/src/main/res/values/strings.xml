@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">BL</string>
+    <string name="title_activity_app_main">AppMainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>

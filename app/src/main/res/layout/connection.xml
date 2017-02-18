@@ -55,5 +55,16 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="36dp" />
 
+    <Button
+
+        android:onClick="newMainPageClicked"
+        android:text=" Go New Main Page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:id="@+id/button" />
+
 
 </RelativeLayout>
