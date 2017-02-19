@@ -24,7 +24,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Switch 1"
+        android:text="@string/switch_1"
         android:maxHeight="10dp"
         android:id="@+id/switch1"
         android:layout_marginTop="52dp"
@@ -36,7 +36,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Switch 2"
+        android:text="@string/switch_2"
         android:id="@+id/switch2"
         android:checked="false"
         android:layout_below="@+id/switch1"
@@ -47,7 +47,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Switch 3"
+        android:text="@string/switch_3"
         android:id="@+id/switch3"
         android:checked="false"
         android:layout_below="@+id/switch2"

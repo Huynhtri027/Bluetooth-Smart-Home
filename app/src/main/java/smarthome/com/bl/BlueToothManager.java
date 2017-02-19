@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 
+import smarthome.util.Messages;
+
 /**
  * Created by Azad on 28-May-16.
  */
@@ -86,7 +88,7 @@ public class BlueToothManager {
     public void openConnection()throws IOException
     {
         // MY_UUID is the app's UUID string, also used by the server code
-        UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); //Standard SerialPortService ID
+        UUID uuid = UUID.fromString(Messages.BLUETOOTH_UUID); //Standard SerialPortService ID
 
         mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);
 
